@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { NavLink, Outlet } from 'react-router-dom';
 import { selectIsLoggedIn, selectUserName } from '../../redux/auth/selectors';
 import { logout } from '../../redux/auth/operations';
-import './AppBar.module.css';
+import './MenuUser.module.css';
 
 const AuthorizedNav = () => {
   const userName = useSelector(selectUserName);
@@ -29,7 +29,7 @@ const UnAuthorizedNav = () => {
   );
 };
 
-export const AppBar = () => {
+export const MenuUser = () => {
   const isLoggedIn = useSelector(selectIsLoggedIn);
 
   return (
