@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { addAsyncContact } from '../../redux/operations';
+import { addAsyncContact } from '../../redux/contacts/operations';
 import { nanoid } from 'nanoid';
 import Notiflix from 'notiflix';
-import { getContacts } from '../../redux/selectors';
+import { getContacts } from '../../redux/contacts/selectors';
 import css from '../../components/ContactForm/ContactForm.module.css';
 
 const ContactForm = () => {

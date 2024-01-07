@@ -1,7 +1,10 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchContacts, deleteAsyncContact } from '../../redux/operations';
-import { getContacts, getFilter } from '../../redux/selectors';
+import {
+  fetchContacts,
+  deleteAsyncContact,
+} from '../../redux/contacts/operations';
+import { getContacts, getFilter } from '../../redux/contacts/selectors';
 import css from './ContactList.module.css';
 
 const ContactList = () => {

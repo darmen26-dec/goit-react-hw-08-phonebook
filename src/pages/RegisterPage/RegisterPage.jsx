@@ -1,7 +1,7 @@
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { register } from '../../redux/auth/operations';
-import { selectIsLoggedIn } from '../../redux/auth/selectors';
-import { Navigate } from 'react-router-dom';
+// import { selectIsLoggedIn } from '../../redux/auth/selectors';
+// import { Navigate } from 'react-router-dom';
 import './RegisterPage.module.css';
 
 const RegisterPage = () => {
@@ -12,7 +12,7 @@ const RegisterPage = () => {
     const name = event.target.username.value;
     const email = event.target.email.value;
     const password = event.target.password.value;
-    const form = event.currentTarget;
+    // const form = event.currentTarget;
     dispatch(
       register({
         name,
@@ -20,13 +20,13 @@ const RegisterPage = () => {
         password,
       })
     );
-    form.reset();
+    // form.reset();
   };
 
-  const isLoggedIn = useSelector(selectIsLoggedIn);
-  if (isLoggedIn) {
-    return <Navigate to="/contacts" />;
-  }
+  //   const isLoggedIn = useSelector(selectIsLoggedIn);
+  //   if (isLoggedIn) {
+  //     return <Navigate to="/contacts" />;
+  //   }
 
   return (
     <div>
