@@ -7,3 +7,17 @@ export const PrivateRoute = ({ component: Component, redirectTo = '/' }) => {
 
   return shouldRedirect ? <Navigate to={redirectTo} /> : Component;
 };
+
+// Inny sposób
+
+// import { selectIsLoggedIn } from '../redux/auth/selectors';
+// import { useSelector } from 'react-redux';
+// import { Navigate } from 'react-router';
+
+// export const PrivateRoute = ({ component: Component, path }) => {
+//   const isLoggedIn = useSelector(selectIsLoggedIn);
+//   if (isLoggedIn) {
+//     return <Component />;
+//   }
+//   return <Navigate to={path} />;
+// };
