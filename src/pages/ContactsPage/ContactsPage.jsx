@@ -1,14 +1,20 @@
-import { Navigate } from 'react-router-dom';
-import { useSelector } from 'react-redux';
-import { selectIsLoggedIn } from '../../redux/auth/selectors';
+import ContactForm from '../../components/ContactForm/ContactForm';
+import Filter from '../../components/Filter/Filter';
+import ContactList from '../../components/ContactList/ContactList';
 
 const ContactsPage = () => {
-  const isLoggedIn = useSelector(selectIsLoggedIn);
-  if (!isLoggedIn) {
-    return <Navigate to="/login" />;
-  }
-
-  return <div>Contacts</div>;
+  return (
+    <>
+      <div className="container">
+        <h1>Phonebook</h1>
+        <ContactForm />
+        <h2>Contacts</h2>
+        <p>Find contact by name</p>
+        <Filter />
+        <ContactList />
+      </div>
+    </>
+  );
 };
 
 export default ContactsPage;

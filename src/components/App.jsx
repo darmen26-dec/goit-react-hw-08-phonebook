@@ -3,9 +3,9 @@ import { Navigate, Route, Routes } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { refreshUser } from '../redux/auth/operations';
 import { useAuth } from '../redux/auth/useAuth';
-import { AppBar } from './AppBar/AppBar';
 import { PrivateRoute } from './PrivateRoute';
 import { RestrictedRoute } from './RestrictedRoute';
+import { UserMenu } from './UserMenu/UserMenu';
 
 const HomePage = lazy(() => import('../pages/HomePage/HomePage'));
 const RegisterPage = lazy(() => import('../pages/RegisterPage/RegisterPage'));
@@ -26,7 +26,7 @@ export const App = () => {
     <>
       <Suspense fallback={<div>Loading...</div>}>
         <Routes>
-          <Route path="/" element={<AppBar />}>
+          <Route path="/" element={<UserMenu />}>
             <Route index element={<HomePage />} />
             <Route
               path="/register"
