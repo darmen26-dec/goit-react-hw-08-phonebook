@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { addAsyncContact } from '../../redux/contacts/operations';
-import { nanoid } from 'nanoid';
 import Notiflix from 'notiflix';
 import { getContacts } from '../../redux/contacts/selectors';
 import css from '../../components/ContactForm/ContactForm.module.css';
@@ -9,15 +8,11 @@ import css from '../../components/ContactForm/ContactForm.module.css';
 const ContactForm = () => {
   const dispatch = useDispatch();
   const contacts = useSelector(getContacts);
-  const [formData, setFormData] = useState({ name: '', phone: '' });
-
-  useEffect(() => {
-    localStorage.setItem('contacts', JSON.stringify(contacts));
-  }, [contacts]);
+  const [formData, setFormData] = useState({ name: '', number: '' });
 
   const handleSubmit = event => {
     event.preventDefault();
-    const { name, phone } = formData;
+    const { name, number } = formData;
 
     const isNameExists = contacts.some(
       contact => contact.name.toLowerCase() === name.toLowerCase()
@@ -28,9 +23,8 @@ const ContactForm = () => {
       return;
     }
 
-    const id = nanoid();
-    dispatch(addAsyncContact({ id, name, phone }));
-    setFormData({ name: '', phone: '' });
+    dispatch(addAsyncContact({ name, number }));
+    setFormData({ name: '', number: '' });
   };
 
   const handleChange = event => {
@@ -62,11 +56,11 @@ const ContactForm = () => {
           className={css.input}
           id="number"
           type="tel"
-          name="phone"
+          name="number"
           autoComplete="off"
           title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
           required
-          value={formData.phone}
+          value={formData.number}
           onChange={handleChange}
           placeholder="+48 123-456-789"
         />
