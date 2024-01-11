@@ -2,7 +2,7 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setFilter } from '../../redux/contacts/filterSlice';
 import { getFilter } from '../../redux/contacts/selectors';
-import css from './Filter.module.css';
+import { Flex, Input } from '@chakra-ui/react';
 
 const Filter = () => {
   const dispatch = useDispatch();
@@ -12,16 +12,18 @@ const Filter = () => {
   };
 
   return (
-    <div>
-      <input
-        type="text"
-        name="filterName"
-        className={css.filter}
+    <Flex>
+      <Input
+        type={'text'}
+        name={'filterName'}
         value={filter.status}
         onChange={onFilterChange}
-        placeholder="Enter name"
+        placeholder={'Enter name'}
+        fontSize={'sm'}
+        mt={'5'}
+        mb={'2'}
       />
-    </div>
+    </Flex>
   );
 };
 

@@ -5,7 +5,7 @@ import {
   deleteAsyncContact,
 } from '../../redux/contacts/operations';
 import { getContacts, getFilter } from '../../redux/contacts/selectors';
-import css from './ContactList.module.css';
+import { Flex, UnorderedList, ListItem, Text, Button } from '@chakra-ui/react';
 
 const ContactList = () => {
   const dispatch = useDispatch();
@@ -29,22 +29,45 @@ const ContactList = () => {
   };
 
   return (
-    <div className={css.contacts}>
-      <ul className={css.contactsList}>
+    <Flex alignItems={'center'} direction={'column'}>
+      <UnorderedList styleType={'none'} p={'5'}>
         {filteredContacts.map(contact => (
-          <li className={css.contactsItem} key={contact.id}>
-            <p className={css.contactsName}>{contact.name}</p>
-            <p className={css.contactsNumber}>{contact.number}</p>
-            <button
-              className={css.contactsBtn}
+          <ListItem
+            key={contact.id}
+            display={'flex'}
+            flexWrap={'nowrap'}
+            alignItems={'center'}
+            mb={'4'}
+          >
+            <Text
+              minW={'160px'}
+              fontSize={'sm'}
+              textAlign={'left'}
+              fontWeight={'semibold'}
+            >
+              {contact.name}
+            </Text>
+            <Text
+              minW={'90px'}
+              fontSize={'xs'}
+              color={'gray.500'}
+              ml={'20px'}
+              mr={'30px'}
+            >
+              {contact.number}
+            </Text>
+            <Button
+              minW={'70px'}
+              fontSize={'xs'}
+              _hover={{ transform: 'scale(1.2)' }}
               onClick={() => deleteContactById(contact.id)}
             >
               Delete
-            </button>
-          </li>
+            </Button>
+          </ListItem>
         ))}
-      </ul>
-    </div>
+      </UnorderedList>
+    </Flex>
   );
 };
 
