@@ -43,7 +43,7 @@ const ContactForm = () => {
             type={'text'}
             name={'name'}
             autoComplete={'off'}
-            pattern={'[A-Za-zÀ-ÖØ-öø-ÿ]+[s]?[A-Za-zÀ-ÖØ-öø-ÿ]+'}
+            pattern={'^[a-zA-Zа-яА-Я]+(([a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$'}
             title={
               "Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
             }
